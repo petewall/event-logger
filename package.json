@@ -1,0 +1,11 @@
+{
+  "name": "event-logger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:petewall/event-logger.git",
+  "author": "Pete Wall <pete.wall@grafana.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}

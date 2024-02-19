@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>event Logger</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+    <script src="events.js"></script>
+  </head>
+  <body>
+    <div class="ui new modal">
+      <i class="close icon"></i>
+      <div class="header">New Event</div>
+      <div class="content">
+        <div class="ui header">Date</div>
+        <div class="ui input">
+          <input class="time" type="datetime-local" />
+        </div>
+
+        <div class="ui header">Message</div>
+        <div class="ui fluid input">
+          <input class="message" type="text" placeholder="Message...">
+        </div>
+
+        <div class="ui header">Labels</div>
+        <div id="label-list"></div>
+
+        <div class="ui input">
+          <input class="label-key" type="text" placeholder="key">
+        </div>
+        <div class="ui action input">
+          <input class="label-value" type="text" placeholder="value">
+          <button id="add-label-button" class="ui positive right labeled icon button">
+            <i class="plus icon"></i>
+            Add
+          </button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="ui black deny button">Cancel</button>
+        <button class="ui positive right labeled icon button">
+          Save
+          <i class="save icon"></i>
+        </button>
+      </div>
+  
+    </div>
+    <div class="ui container">
+      <button class="ui right floated positive labeled icon new button">
+        <i class="plus icon"></i>
+        New Event
+      </button>
+      <h1>Notable Events</h1>
+      <table class="ui single line table">
+        <thead>
+          <tr>
+            <th class="collapsing">When</th>
+            <th>Description</th>
+            <th class="collapsing">Labels</th>
+          </tr>
+        </thead>
+        <tbody id="events-list">
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
