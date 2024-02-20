@@ -7,7 +7,9 @@ Copyright © 2024 Pete Wall <pete@petewall.net>
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
+	"time"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
@@ -50,13 +52,26 @@ func (s *Server) getEvents(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) addEvent(w http.ResponseWriter, r *http.Request) {
+	body, err := io.ReadAll(r.Body)
+	if err != nil {
+		log.WithError(err).Error("failed to read event")
+		w.WriteHeader(http.StatusBadRequest)
+		_, _ = fmt.Fprintf(w, "failed to read event: %s", err.Error())
+		return
+	}
+
 	var event *Event
-	err := json.NewDecoder(r.Body).Decode(&event)
+	err = json.Unmarshal(body, &event)
 	if err != nil {
 		log.WithError(err).Error("failed to parse event")
 		w.WriteHeader(http.StatusBadRequest)
 		_, _ = fmt.Fprintf(w, "failed to parse event: %s", err.Error())
 		return
+	}
+
+	log.WithField("event", string(body)).Info("Adding new event")
+	if event.Time == "" {
+		event.Time = time.Now().Format("2006-01-02T15:04")
 	}
 
 	err = s.Events.Add(event)
