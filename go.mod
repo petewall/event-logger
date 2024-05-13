@@ -5,7 +5,7 @@ go 1.21.6
 require (
 	github.com/go-chi/chi/v5 v5.0.12
 	github.com/go-logfmt/logfmt v0.6.0
-	github.com/prometheus/client_golang v1.19.0
+	github.com/prometheus/client_golang v1.19.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.18.2
