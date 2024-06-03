@@ -6,6 +6,6 @@
   "author": "Pete Wall <pete.wall@grafana.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^9.1.0"
+    "eslint": "^9.4.0"
   }
 }
